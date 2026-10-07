@@ -1,0 +1,26 @@
+# rebind 'cmd+h' to avoid macOS hiding the window and allow remapping in neovim
+# keybind = super+h=csi:104;9u
+# keybind = super+digit_1=csi:49;9u
+# keybind = super+digit_2=csi:50;9u
+# keybind = super+digit_3=csi:51;9u
+# keybind = super+digit_4=csi:52;9u
+# keybind = super+digit_5=csi:53;9u
+# keybind = super+digit_6=csi:54;9u
+# keybind = super+digit_7=csi:55;9u
+# keybind = super+digit_8=csi:56;9u
+# keybind = super+digit_9=csi:57;9u
+# keybind = unconsumed:super+digit_0=csi:48;9u
+
+# aesthetics
+theme = Builtin Dark
+background-opacity = 0.85
+background-blur = 16
+background = #000000
+macos-titlebar-style = tabs
+
+# typography
+font-size = 14
+font-family = SauceCodePro Nerd Font Mono
+
+# Features
+# shell-integration-features = sudo,ssh-env,ssh-terminfo
