@@ -70,8 +70,7 @@ ZSH_THEME="steeef"
 # Custom plugins may be added to $ZSH_CUSTOM/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
-# plugins=(git zsh-autosuggestions autoupdate vi-mode zsh-syntax-highlighting)
-plugins=(git zsh-autosuggestions autoupdate zsh-syntax-highlighting)
+plugins=(git autoupdate vi-mode zsh-autosuggestions zsh-syntax-highlighting)
 
 source $ZSH/oh-my-zsh.sh
 
@@ -114,5 +113,36 @@ alias git-shallow-clone='git clone --shallow-since="never" --single-branch --bra
 # Welcome Message!
 zsh ~/.config/motd
 
-# Whats this
-# . "$HOME/.local/share/../bin/env"
+function pexpr() {
+    local expr=$@
+
+    echo "$(uv run python -c "print($expr)")"
+}
+
+function activate_venv() {
+    local venv_dir=".venv"
+
+    if ! [[ -z "$VIRTUAL_ENV" ]] ; then
+        if [[ "$PWD"/ != "$(dirname "$VIRTUAL_ENV")"/* ]] ; then
+            deactivate
+        fi
+    fi
+    if [[ -d "$PWD/$venv_dir" && -z "$VIRTUAL_ENV" ]] ; then
+        source "$PWD/$venv_dir/bin/activate"
+    fi
+}
+activate_venv
+
+function activate_env() {
+    local env_file=".env"
+
+    if [[ -f "$PWD/$env_file" ]] ; then
+        source "$PWD/$env_file"
+    fi
+}
+activate_env
+
+autoload -U add-zsh-hook
+add-zsh-hook chpwd activate_venv
+add-zsh-hook chpwd activate_env
+
