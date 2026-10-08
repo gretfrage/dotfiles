@@ -1,2 +1,3 @@
 export EDITOR='/usr/bin/vim'
-export LESS='RS'
+export LESS='-RS'
+path=( $path $HOME/.local/bin )
