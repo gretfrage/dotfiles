@@ -1,0 +1,6 @@
+[user]
+	name = gretfrage
+	email = marco.somaschini.eng@gmail.com
+[credential]
+	helper = store
+	useHttpPath = true
